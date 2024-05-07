@@ -8,4 +8,8 @@ console.log(components)
 
 import "@fontsource/ubuntu"
 
-createApp(App).use(store).use(router).mount("#app")
+const app = createApp(App)
+app.use(store).use(router).mount("#app")
+Object.entries(components).forEach(([name, component]) => {
+  app.component(name, component)
+})
