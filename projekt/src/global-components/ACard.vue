@@ -1,18 +1,22 @@
 <template>
-  <div></div>
+  <div class="a-card">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
 
 export default defineComponent({
-  name: "HelloWorld",
+  name: "ACard",
 })
 </script>
 
 <style scoped lang="scss">
-h3 {
+.a-card {
+  border: 1px solid $primary;
   color: $primary;
-  font-size: 90px;
+  border-radius: 5px;
+  padding: 16px;
 }
 </style>
