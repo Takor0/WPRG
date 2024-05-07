@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <AButton>Click me</AButton>
+  <div class="d-flex flex-column m-5 gap-5">
+    <div class="d-flex gap-4">
+      <AButton color="primary">Click me</AButton>
+      <AButton color="secondary">Click me</AButton>
+    </div>
     <ACard>A card</ACard>
   </div>
 </template>
@@ -11,11 +14,3 @@ export default defineComponent({
   name: "AComponents",
 })
 </script>
-
-<style scoped lang="scss">
-.login {
-  gap: 30px;
-  display: flex;
-  margin: 30px;
-}
-</style>

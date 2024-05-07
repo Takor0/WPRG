@@ -1,5 +1,5 @@
 <template>
-  <button class="a-button">
+  <button class="a-button" :class="color">
     <slot></slot>
   </button>
 </template>
@@ -12,7 +12,6 @@ export default defineComponent({
   props: {
     color: {
       type: String,
-      default: "primary",
       validator: (value: string) => ["primary", "secondary"].includes(value),
     },
   },
@@ -21,5 +20,35 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .a-button {
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 10px 20px;
+  border: 1px solid $primary;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: lighten($primary, 40%);
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    background-color: $primary;
+    color: $secondary;
+  }
+
+  &.secondary {
+    color: $primary;
+  }
+
+  &:hover {
+    background-color: darken($primary, 10%);
+    border-color: $secondary;
+  }
 }
 </style>
