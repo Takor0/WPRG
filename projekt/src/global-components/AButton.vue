@@ -19,6 +19,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import "src/styles/colors";
+
 .a-button {
   background-color: transparent;
   cursor: pointer;
@@ -49,6 +51,10 @@ export default defineComponent({
   &:hover {
     background-color: darken($primary, 10%);
     border-color: $secondary;
+  }
+
+  &:active {
+    background-color: darken($primary, 20%);
   }
 }
 </style>
