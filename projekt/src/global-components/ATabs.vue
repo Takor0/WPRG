@@ -1,11 +1,15 @@
 <template>
-  <div class="a-tabs">
-    <div v-for="(option, index) in options" :key="index">
+  <div class="a-tabs d-flex flex-row`">
+    <div
+      v-for="(option, index) in options"
+      :key="index"
+      @click="updateValue(getValue(option))"
+      :class="{ selected: getValue(option) === modelValue }"
+    >
       {{ getLabel(option) }}
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import { defineComponent } from "vue"
 
@@ -14,21 +18,30 @@ interface Option {
   value: string | number
 }
 
-type OptionType = string | Option
+type OptionType = string | number | Option
 export default defineComponent({
   name: "ATabs",
   methods: {
-    getLabel(option: OptionType): string | number {
-      return typeof option === "string" ? option : option.label
+    getValue(option: OptionType): string | number {
+      return typeof option === "object" ? option.value : option
     },
+    getLabel(option: OptionType): string | number {
+      return typeof option === "object" ? option.label : option
+    },
+    updateValue(value: string | number) {
+      this.$emit("update:modelValue", value)
+    }
   },
   props: {
     options: {
       type: Array as () => OptionType[],
-      required: true,
+      required: true
     },
-  },
+    modelValue: {
+      type: [String, Number],
+      default: null
+    }
+  }
 })
 </script>
-
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

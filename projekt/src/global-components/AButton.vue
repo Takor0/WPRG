@@ -12,9 +12,9 @@ export default defineComponent({
   props: {
     color: {
       type: String,
-      validator: (value: string) => ["primary", "secondary"].includes(value),
-    },
-  },
+      validator: (value: string) => ["primary", "secondary"].includes(value)
+    }
+  }
 })
 </script>
 
