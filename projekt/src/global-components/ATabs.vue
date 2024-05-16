@@ -1,10 +1,11 @@
 <template>
   <div class="a-tabs d-flex flex-row`">
     <div
+      class="tab"
       v-for="(option, index) in options"
       :key="index"
       @click="updateValue(getValue(option))"
-      :class="{ selected: getValue(option) === modelValue }"
+      :class="{ tab__selected: getValue(option) === modelValue }"
     >
       {{ getLabel(option) }}
     </div>
@@ -44,4 +45,22 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.a-tabs {
+  background-color: black;
+  width: fit-content;
+  border-radius: 8px;
+
+  .tab {
+    color: $primary;
+    cursor: pointer;
+    padding: 12px 32px;
+
+    &__selected {
+      background-color: $primary;
+      color: black;
+      border-radius: 8px;
+    }
+  }
+}
+</style>

@@ -5,7 +5,7 @@
       <AButton color="secondary">Click me</AButton>
     </div>
     <ACard>A card</ACard>
-    <ATabs v-model="tab" :options="['tag1', 'tag2', 'tag3']" />
+    <ATabs v-model="tab" :options="['TAG1', 'TAG2', 'TAG3']" />
   </div>
 </template>
 <script lang="ts">
@@ -15,7 +15,7 @@ export default defineComponent({
   name: "AComponents",
   data() {
     return {
-      tab: "tag1"
+      tab: "TAG1"
     }
   }
 })
