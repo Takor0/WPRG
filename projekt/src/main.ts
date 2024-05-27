@@ -3,8 +3,13 @@ import App from "./App.vue"
 import router from "./router"
 import store from "./store"
 import AButton from "@/global-components/AButton.vue"
-import ACard from "@/global-components/ACard.vue"
+import APost from "@/global-components/APost.vue"
 import ATabs from "@/global-components/ATabs.vue"
+import ATextArea from "@/global-components/ATextArea.vue"
+import AInput from "@/global-components/AInput.vue"
+
+import moment from "moment"
+moment.locale("pl")
 
 import "@fontsource/ubuntu"
 
@@ -12,5 +17,7 @@ const app = createApp(App)
 app.use(store).use(router).mount("#app")
 
 app.component("AButton", AButton)
-app.component("ACard", ACard)
+app.component("APost", APost)
 app.component("ATabs", ATabs)
+app.component("ATextArea", ATextArea)
+app.component("AInput", AInput)
