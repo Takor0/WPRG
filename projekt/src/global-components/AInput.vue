@@ -7,6 +7,7 @@
         :value="modelValue"
         @input="updateValue"
         :type="type"
+        :required="required"
       />
       <label for="input">{{ label }}</label>
     </div>
@@ -27,6 +28,10 @@ export default {
     type: {
       type: String,
       default: "text"
+    },
+    required: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
@@ -66,12 +71,21 @@ input:focus {
       font-size: 20px;
       padding: 10px;
 
+      &:-webkit-autofill + label,
       &:focus + label,
       &.active + label {
         top: -14px;
         left: 6px;
         z-index: 1;
         font-size: 16px;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-text-fill-color: $primary;
+        transition: background-color 5000s ease-in-out 0s;
       }
     }
 
@@ -86,12 +100,5 @@ input:focus {
       color: $primary;
     }
   }
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-text-fill-color: $primary;
-  transition: background-color 5000s ease-in-out 0s;
 }
 </style>

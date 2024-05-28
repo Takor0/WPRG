@@ -1,6 +1,6 @@
 <template>
   <div class="login d-flex h-100 align-items-center justify-content-center">
-    <div class="d-flex flex-column gap-3">
+    <form class="d-flex flex-column gap-3">
       <AInput
         v-for="(input, key) in inputs"
         :key="key"
@@ -8,8 +8,16 @@
         :type="input.type"
         :label="input.label"
       />
-      <AButton color="primary">Zaloguj</AButton>
-    </div>
+      <AButton color="primary" type="submit">{{
+        isRegister ? "Utwórz konto" : "Zaloguj"
+      }}</AButton>
+      <div class="c-primary mt-2">
+        {{ isRegister ? "Posiadasz już konto?" : "Nie posiadasz konta?" }}
+        <span class="fw-bold pointer" @click="isRegister = !isRegister">
+          {{ isRegister ? "Zaloguj się" : "Zarejestruj się" }}
+        </span>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -22,10 +30,16 @@ export default defineComponent({
   components: { AInput },
   data() {
     return {
+      isRegister: false,
       inputs: [
         { label: "Email", value: "", type: "email" },
         { label: "Password", value: "", type: "password" }
       ]
+    }
+  },
+  watch: {
+    isRegister() {
+      Object.values(this.inputs).forEach((input) => (input.value = ""))
     }
   }
 })
