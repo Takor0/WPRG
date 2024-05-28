@@ -1,6 +1,6 @@
 <template>
   <div class="login d-flex h-100 align-items-center justify-content-center">
-    <form class="d-flex flex-column gap-3">
+    <form class="d-flex flex-column gap-3 align-items-center">
       <AInput
         v-for="(input, key) in inputs"
         :key="key"
@@ -8,7 +8,7 @@
         :type="input.type"
         :label="input.label"
       />
-      <AButton color="primary" type="submit">{{
+      <AButton color="primary" type="submit" class="w-100">{{
         isRegister ? "Utwórz konto" : "Zaloguj"
       }}</AButton>
       <div class="c-primary mt-2">
