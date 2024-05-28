@@ -1,23 +1,26 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
-import HomeView from "@/views/HomeView.vue"
+import TheContainer from "@/views/TheContainer.vue"
 import LoginView from "@/views/LoginView.vue"
 import AComponents from "@/views/AComponents.vue"
+import { h, resolveComponent } from "vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "",
     name: "home",
-    component: HomeView
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: LoginView
-  },
-  {
-    path: "/components",
-    name: "components",
-    component: AComponents
+    component: TheContainer,
+    children: [
+      {
+        path: "/login",
+        name: "login",
+        component: LoginView
+      },
+      {
+        path: "/components",
+        name: "components",
+        component: AComponents
+      }
+    ]
   }
 ]
 

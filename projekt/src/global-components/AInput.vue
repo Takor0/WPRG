@@ -6,6 +6,7 @@
         :class="aInputClass"
         :value="modelValue"
         @input="updateValue"
+        :type="type"
       />
       <label for="input">{{ label }}</label>
     </div>
@@ -22,6 +23,10 @@ export default {
     label: {
       type: String,
       default: null
+    },
+    type: {
+      type: String,
+      default: "text"
     }
   },
   methods: {
@@ -59,10 +64,7 @@ input:focus {
       border-radius: 5px;
       color: $primary;
       font-size: 20px;
-
-      &:focus + label {
-        color: darken($primary, 10%);
-      }
+      padding: 10px;
 
       &:focus + label,
       &.active + label {
@@ -75,7 +77,7 @@ input:focus {
 
     label {
       z-index: -1;
-      top: 2px;
+      top: 10px;
       left: 6px;
       position: absolute;
       background-color: $secondary;
@@ -84,5 +86,12 @@ input:focus {
       color: $primary;
     }
   }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: $primary;
+  transition: background-color 5000s ease-in-out 0s;
 }
 </style>
