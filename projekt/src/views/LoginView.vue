@@ -1,6 +1,7 @@
 <template>
   <div class="login d-flex h-100 align-items-center justify-content-center">
-    <form class="d-flex flex-column gap-3 align-items-center">
+    <div class="d-flex flex-column gap-3 align-items-center">
+      <button @click="asd">asd</button>
       <AInput
         v-for="(input, key) in inputs"
         :key="key"
@@ -8,16 +9,16 @@
         :type="input.type"
         :label="input.label"
       />
-      <AButton color="primary" type="submit" class="w-100">{{
-        isRegister ? "Utwórz konto" : "Zaloguj"
-      }}</AButton>
+      <AButton color="primary" type="submit" class="w-100"
+        >{{ isRegister ? "Utwórz konto" : "Zaloguj" }}
+      </AButton>
       <div class="c-primary mt-2">
         {{ isRegister ? "Posiadasz już konto?" : "Nie posiadasz konta?" }}
         <span class="fw-bold pointer" @click="isRegister = !isRegister">
           {{ isRegister ? "Zaloguj się" : "Zarejestruj się" }}
         </span>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -28,6 +29,11 @@ import AInput from "@/global-components/AInput.vue"
 export default defineComponent({
   name: "LoginView",
   components: { AInput },
+  methods: {
+    asd() {
+      console.log("asd")
+    }
+  },
   data() {
     return {
       isRegister: false,
