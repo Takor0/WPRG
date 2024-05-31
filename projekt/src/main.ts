@@ -1,8 +1,7 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
-import store from "./store"
-import { Helpers } from "@/mixins/helpers"
+import { userStore } from "@/store/userStore"
 
 import AButton from "@/global-components/AButton.vue"
 import APost from "@/global-components/APost.vue"
@@ -16,8 +15,7 @@ moment.locale("pl")
 import "@fontsource/ubuntu"
 
 const app = createApp(App)
-app.use(store).use(router).mount("#app")
-app.mixin(Helpers)
+app.use(userStore).use(router).mount("#app")
 app.component("AButton", AButton)
 app.component("APost", APost)
 app.component("ATabs", ATabs)

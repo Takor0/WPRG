@@ -1,5 +1,6 @@
 <?php
 // Allow from any origin
+require 'main.php';
 if (isset($_SERVER['HTTP_ORIGIN'])) {
     // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
     // you want to allow, and if so:

@@ -2,14 +2,14 @@
   <div class="a-input">
     <div class="a-input__wrapper">
       <input
-        id="input"
+        :id="label"
         :class="aInputClass"
         :value="modelValue"
         @input="updateValue"
         :type="type"
         :required="required"
       />
-      <label for="input">{{ label }}</label>
+      <label :for="label">{{ label }}</label>
     </div>
   </div>
 </template>
@@ -23,7 +23,8 @@ export default {
     },
     label: {
       type: String,
-      default: null
+      default: null,
+      required: true
     },
     type: {
       type: String,
