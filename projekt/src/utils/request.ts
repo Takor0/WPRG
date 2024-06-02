@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost/projekt/api"
+const BASE_URL = "http://localhost/projekt/api/endpoint"
 
 export default async function request(
   url: string,
@@ -25,6 +25,10 @@ export default async function request(
     }
 
     const response = await fetch(urlWithParams, options)
+
+    // PHP DEBUGGER xd
+    const r: string = await response.clone().text()
+    console.log("resik:", r)
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
