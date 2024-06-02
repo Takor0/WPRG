@@ -1,6 +1,8 @@
 <?php
 require '../cors.php';
-require '../db/DatabaseConnector.php';
+
+require $_SERVER['DOCUMENT_ROOT'] . '/projekt/api/models/UserModel.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/projekt/api/validators/credentials.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -14,23 +16,12 @@ switch ($method) {
         $data = $_GET;
         break;
     case 'POST':
-
         $data = json_decode(file_get_contents('php://input'), true);
         break;
-
 }
 
 $email = $data['email'];
 $password = $data['password'];
-
-function validate_credentials($email, $password): bool
-{
-    $stored_email = 'admin@zettafox.com';
-    $stored_password = 'Q&,v6kBS+]]S`cd.';
-
-    return $email === $stored_email && $password === $stored_password;
-}
-
 
 if (!validate_credentials($email, $password)) {
     http_response_code(401);
@@ -45,7 +36,6 @@ $_SESSION['email'] = $email;
 $token = generate_token($email);
 $_SESSION['token'] = generate_token($token);
 
-$dbConnection = (new DatabaseConnector())->getConnection();
 
 //return token
 http_response(["message" => "Login successful", "token" => $token]);

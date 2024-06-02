@@ -6,10 +6,9 @@ class DatabaseConnector {
     public function __construct()
     {
         # TODO: use getenv to get environment variables
-
         $host = "127.0.0.1";
         $port = "3301";
-        $db   = "s27268";
+        $db = "s27268";
         $user = "s27268";
         $pass = "Tom.Wako";
 
